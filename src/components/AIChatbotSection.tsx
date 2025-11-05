@@ -1,7 +1,10 @@
+'use client';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 export default function AIChatbotSection() {
     return (
@@ -50,24 +53,31 @@ export default function AIChatbotSection() {
             <div className='max-w-7xl mx-auto relative z-10'>
                 {/* Header */}
                 <div className='text-center mb-20'>
-                    <Badge className='mb-6 bg-gradient-to-r from-blue-300/20 to-orange-300/20 text-white border border-white/20 backdrop-blur-sm px-6 py-2'>
-                        🤖 AI-Powered Solutions
-                    </Badge>
-                    <h2 className='text-5xl md:text-6xl font-bold text-white mb-8'>
-                        Intelligent AI Chatbots That
-                        <span className='bg-gradient-to-r from-blue-300 via-orange-300 to-pink-300 bg-clip-text text-transparent block'>
-                            Transform Customer Experience
-                        </span>
-                    </h2>
-                    <p className='text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed'>
-                        Deploy cutting-edge AI chatbots that understand context,
-                        learn from interactions, and provide instant,
-                        intelligent responses to your customers 24/7.
-                    </p>
+                    <ScrollAnimation delay={0.1}>
+                        <Badge className='mb-6 bg-gradient-to-r from-blue-300/20 to-orange-300/20 text-white border border-white/20 backdrop-blur-sm px-6 py-2'>
+                            🤖 AI-Powered Solutions
+                        </Badge>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.2}>
+                        <h2 className='text-5xl md:text-6xl font-bold text-white mb-8'>
+                            Intelligent AI Chatbots That
+                            <span className='bg-gradient-to-r from-blue-300 via-orange-300 to-pink-300 bg-clip-text text-transparent block'>
+                                Transform Customer Experience
+                            </span>
+                        </h2>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.3}>
+                        <p className='text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed'>
+                            Deploy cutting-edge AI chatbots that understand context,
+                            learn from interactions, and provide instant,
+                            intelligent responses to your customers 24/7.
+                        </p>
+                    </ScrollAnimation>
                 </div>
 
                 {/* CTA Section */}
-                <div className='relative mt-20'>
+                <ScrollAnimation delay={0.4} direction='up'>
+                    <div className='relative mt-20'>
                     <div className='relative bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-gray-200 overflow-hidden'>
                         {/* Decorative gradient accent */}
                         <div className='absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-500 via-orange-500 to-pink-500'></div>
@@ -151,6 +161,7 @@ export default function AIChatbotSection() {
                         </div>
                     </div>
                 </div>
+                </ScrollAnimation>
             </div>
         </section>
     );

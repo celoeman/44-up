@@ -1,4 +1,7 @@
+'use client';
+
 import { Badge } from '@/components/ui/badge';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 const testimonials = [
     {
@@ -46,17 +49,26 @@ export default function TestimonialsSection() {
             <div className='max-w-7xl mx-auto relative z-10'>
                 {/* Header */}
                 <div className='text-center mb-20'>
-                    <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6'>
-                        44Up
-                    </h2>
-                    <p className='text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed'>
-                        See what our clients say about working with 44Up
-                    </p>
+                    <ScrollAnimation delay={0.1}>
+                        <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6'>
+                            44Up
+                        </h2>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.2}>
+                        <p className='text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed'>
+                            See what our clients say about working with 44Up
+                        </p>
+                    </ScrollAnimation>
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                     {testimonials.map((testimonial, index) => (
-                        <div key={index}>
+                        <ScrollAnimation
+                            key={index}
+                            delay={0.1 + index * 0.15}
+                            direction='up'
+                        >
+                            <div>
                             <div className='relative bg-white rounded-3xl p-8 border-2 border-gray-200'>
                                 {/* Quote icon */}
                                 <div className='absolute top-6 right-6 text-6xl text-orange-500/10 font-serif leading-none'>
@@ -107,6 +119,7 @@ export default function TestimonialsSection() {
                                 </div>
                             </div>
                         </div>
+                        </ScrollAnimation>
                     ))}
                 </div>
             </div>

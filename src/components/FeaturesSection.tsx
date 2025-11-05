@@ -1,6 +1,9 @@
+'use client';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 const features = [
     {
@@ -56,25 +59,36 @@ export default function FeaturesSection() {
 
             <div className='max-w-7xl mx-auto relative z-10'>
                 <div className='text-center mb-16'>
-                    <div className='inline-block mb-6 px-6 py-2 bg-gradient-to-r from-orange-100 to-pink-100 rounded-full border border-orange-200'>
-                        <span className='text-sm font-semibold text-orange-700'>
-                            ✨ Why Choose 44Up?
-                        </span>
-                    </div>
-                    <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6'>
-                        Built for Your Success
-                    </h2>
-                    <p className='text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed'>
-                        We don't just build websites and apps. We craft digital
-                        experiences that transform businesses and drive growth.
-                        Our strategy isn't prepackaged, it's built with you in
-                        mind.
-                    </p>
+                    <ScrollAnimation delay={0.1}>
+                        <div className='inline-block mb-6 px-6 py-2 bg-gradient-to-r from-orange-100 to-pink-100 rounded-full border border-orange-200'>
+                            <span className='text-sm font-semibold text-orange-700'>
+                                ✨ Why Choose 44Up?
+                            </span>
+                        </div>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.2}>
+                        <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6'>
+                            Built for Your Success
+                        </h2>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.3}>
+                        <p className='text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed'>
+                            We don't just build websites and apps. We craft digital
+                            experiences that transform businesses and drive growth.
+                            Our strategy isn't prepackaged, it's built with you in
+                            mind.
+                        </p>
+                    </ScrollAnimation>
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
                     {features.map((feature, index) => (
-                        <div key={index} className='group relative'>
+                        <ScrollAnimation
+                            key={index}
+                            delay={0.1 + index * 0.1}
+                            direction='up'
+                        >
+                            <div className='group relative'>
                             {/* Gradient border on hover */}
                             <div className='absolute -inset-0.5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500'></div>
                             
@@ -92,14 +106,16 @@ export default function FeaturesSection() {
                                 </p>
                                 
                                 {/* Decorative element */}
-                                <div className='h-1 w-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full mt-4 group-hover:w-20 transition-all duration-300'></div>
+                                <div className='h-1 w-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full mt-4 group-hover:w-20 transition-all duration-300'>                                </div>
                             </div>
                         </div>
+                        </ScrollAnimation>
                     ))}
                 </div>
 
-                <div className='text-center'>
-                    <div className='inline-block bg-gradient-to-r from-orange-50 to-pink-50 rounded-2xl p-8 border border-orange-200 shadow-lg'>
+                <ScrollAnimation delay={0.3} direction='up'>
+                    <div className='text-center'>
+                        <div className='inline-block bg-gradient-to-r from-orange-50 to-pink-50 rounded-2xl p-8 border border-orange-200 shadow-lg'>
                         <p className='text-lg text-gray-700 mb-6 font-medium'>
                             Ready to transform your digital presence?
                         </p>
@@ -112,7 +128,8 @@ export default function FeaturesSection() {
                             </Button>
                         </Link>
                     </div>
-                </div>
+                    </div>
+                </ScrollAnimation>
             </div>
         </section>
     );

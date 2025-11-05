@@ -5,7 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe, Server, Search, TrendingUp, Target, Paintbrush, Briefcase } from 'lucide-react';
+import {
+    Globe,
+    Server,
+    Search,
+    Smartphone,
+    Paintbrush,
+    Briefcase,
+} from 'lucide-react';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 export const serviceCategories = [
     {
@@ -253,9 +261,9 @@ const services = [
     },
     {
         icon: Paintbrush,
-        title: 'Web Design',
+        title: 'Design and Marketing',
         description:
-            'Crafting visually appealing and user-friendly interfaces that enhance brand presence and create intuitive user experiences that convert visitors into customers.',
+            'Crafting visually appealing designs and comprehensive marketing strategies that enhance brand presence, create intuitive user experiences, and drive customer engagement and conversions.',
         gradient: 'from-pink-500 to-rose-500',
     },
     {
@@ -280,10 +288,10 @@ const services = [
         gradient: 'from-orange-500 to-red-500',
     },
     {
-        icon: Target,
-        title: 'CRO',
+        icon: Smartphone,
+        title: 'Mobile App Development',
         description:
-            'Analyzing user behavior to improve website elements and strategies, aiming to increase the percentage of website visitors who convert into customers or take desired actions.',
+            'Building native and cross-platform mobile applications for iOS and Android that deliver exceptional user experiences and drive business growth through innovative mobile solutions.',
         gradient: 'from-indigo-500 to-blue-500',
     },
 ];
@@ -323,31 +331,37 @@ export default function ServicesSection() {
             <div className='max-w-7xl mx-auto relative z-10'>
                 {/* Header */}
                 <div className='text-center mb-20'>
-                    <Badge className='mb-6 bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-gray-800 border border-orange-300 backdrop-blur-sm px-6 py-2 shadow-lg'>
-                        ✨ Our Services
-                    </Badge>
-                    <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6'>
-                        {isRootPage ? (
-                            <>
-                                Why settle for cookie-cutter technology
-                                <span className='block bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent'>
-                                    for your unique business
-                                </span>
-                            </>
-                        ) : (
-                            <>
-                                Stay ahead of the competition
-                                <span className='block bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent'>
-                                    and achieve unparalleled results
-                                </span>
-                            </>
-                        )}
-                    </h2>
-                    <p className='text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed'>
-                        {isRootPage
-                            ? 'Everything we build starts from a blank page.'
-                            : "We don't recycle ideas, we invent them."}
-                    </p>
+                    <ScrollAnimation delay={0.1}>
+                        <Badge className='mb-6 bg-gradient-to-r from-orange-500/20 to-pink-500/20 text-gray-800 border border-orange-300 backdrop-blur-sm px-6 py-2 shadow-lg'>
+                            ✨ Our Services
+                        </Badge>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.2}>
+                        <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6'>
+                            {isRootPage ? (
+                                <>
+                                    Why settle for cookie-cutter technology
+                                    <span className='block bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent'>
+                                        for your unique business
+                                    </span>
+                                </>
+                            ) : (
+                                <>
+                                    Stay ahead of the competition
+                                    <span className='block bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent'>
+                                        and achieve unparalleled results
+                                    </span>
+                                </>
+                            )}
+                        </h2>
+                    </ScrollAnimation>
+                    <ScrollAnimation delay={0.3}>
+                        <p className='text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed'>
+                            {isRootPage
+                                ? 'Everything we build starts from a blank page.'
+                                : "We don't recycle ideas, we invent them."}
+                        </p>
+                    </ScrollAnimation>
                 </div>
 
                 {/* Services Grid */}
@@ -355,88 +369,90 @@ export default function ServicesSection() {
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
-                            <div
+                            <ScrollAnimation
                                 key={index}
-                                className='group relative'
-                                style={{
-                                    animationDelay: `${index * 100}ms`,
-                                }}
+                                delay={0.1 + index * 0.1}
+                                direction='up'
                             >
-                                {/* Card Glow Effect */}
-                                <div
-                                    className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-20 blur-xl rounded-3xl transition-opacity duration-500`}
-                                ></div>
+                                <div className='group relative'>
+                                    {/* Card Glow Effect */}
+                                    <div
+                                        className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-20 blur-xl rounded-3xl transition-opacity duration-500`}
+                                    ></div>
 
-                                <Card className='relative h-full bg-white/90 backdrop-blur-md border-2 border-gray-200 shadow-xl hover:shadow-2xl rounded-3xl p-8 transition-all duration-500 transform hover:scale-105 hover:-rotate-1 group-hover:border-orange-300'>
-                                    <CardContent className='p-0'>
-                                        <div className='flex flex-col items-center text-center'>
-                                            {/* Icon with Gradient Background */}
-                                            <div
-                                                className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
-                                            >
-                                                <Icon className='w-10 h-10 text-white' />
+                                    <Card className='relative h-full bg-white/90 backdrop-blur-md border-2 border-gray-200 shadow-xl hover:shadow-2xl rounded-3xl p-8 transition-all duration-500 transform hover:scale-105 hover:-rotate-1 group-hover:border-orange-300'>
+                                        <CardContent className='p-0'>
+                                            <div className='flex flex-col items-center text-center'>
+                                                {/* Icon with Gradient Background */}
+                                                <div
+                                                    className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
+                                                >
+                                                    <Icon className='w-10 h-10 text-white' />
+                                                </div>
+
+                                                {/* Title */}
+                                                <h3 className='text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300'>
+                                                    {service.title}
+                                                </h3>
+
+                                                {/* Description */}
+                                                <p className='text-gray-700 leading-relaxed'>
+                                                    {service.description}
+                                                </p>
                                             </div>
-
-                                            {/* Title */}
-                                            <h3 className='text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300'>
-                                                {service.title}
-                                            </h3>
-
-                                            {/* Description */}
-                                            <p className='text-gray-700 leading-relaxed'>
-                                                {service.description}
-                                            </p>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </ScrollAnimation>
                         );
                     })}
                 </div>
 
                 {/* Enhanced CTA Section */}
-                <div className='relative'>
-                    <div className='relative bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-3xl p-12 text-center text-white overflow-hidden'>
-                        {/* Animated Background Pattern */}
-                        <div className='absolute inset-0 opacity-20'>
-                            <div className='absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2)_2px,transparent_2px)] bg-[size:30px_30px] animate-pulse'></div>
-                        </div>
+                <ScrollAnimation delay={0.3} direction='up'>
+                    <div className='relative'>
+                        <div className='relative bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-3xl p-12 text-center text-white overflow-hidden'>
+                            {/* Animated Background Pattern */}
+                            <div className='absolute inset-0 opacity-20'>
+                                <div className='absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2)_2px,transparent_2px)] bg-[size:30px_30px] animate-pulse'></div>
+                            </div>
 
-                        {/* Floating Elements */}
-                        <div className='absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse'></div>
-                        <div className='absolute bottom-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000'></div>
+                            {/* Floating Elements */}
+                            <div className='absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse'></div>
+                            <div className='absolute bottom-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000'></div>
 
-                        <div className='relative z-10'>
-                            <h3 className='text-4xl md:text-5xl font-bold mb-6'>
-                                Ready to Transform Your Digital Presence?
-                            </h3>
-                            <p className='text-xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed'>
-                                Explore our full range of services and discover
-                                how we can help you achieve your business goals
-                                with cutting-edge solutions tailored to your
-                                needs.
-                            </p>
-                            <div className='flex flex-col sm:flex-row gap-6 justify-center'>
-                                <Link href='/services'>
-                                    <Button
-                                        size='lg'
-                                        className='text-lg px-10 py-6 bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:scale-105 font-semibold'
-                                    >
-                                        Explore All Services
-                                    </Button>
-                                </Link>
-                                <Link href='/contact'>
-                                    <Button
-                                        size='lg'
-                                        className='text-lg px-10 py-6 bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:scale-105 font-semibold'
-                                    >
-                                        Get a Free Consultation
-                                    </Button>
-                                </Link>
+                            <div className='relative z-10'>
+                                <h3 className='text-4xl md:text-5xl font-bold mb-6'>
+                                    Ready to Transform Your Digital Presence?
+                                </h3>
+                                <p className='text-xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed'>
+                                    Explore our full range of services and
+                                    discover how we can help you achieve your
+                                    business goals with cutting-edge solutions
+                                    tailored to your needs.
+                                </p>
+                                <div className='flex flex-col sm:flex-row gap-6 justify-center'>
+                                    <Link href='/services'>
+                                        <Button
+                                            size='lg'
+                                            className='text-lg px-10 py-6 bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:scale-105 font-semibold'
+                                        >
+                                            Explore All Services
+                                        </Button>
+                                    </Link>
+                                    <Link href='/contact'>
+                                        <Button
+                                            size='lg'
+                                            className='text-lg px-10 py-6 bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:scale-105 font-semibold'
+                                        >
+                                            Get a Free Consultation
+                                        </Button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ScrollAnimation>
             </div>
         </section>
     );
