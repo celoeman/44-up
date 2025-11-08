@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Logo from '@/components/Logo';
@@ -9,6 +9,7 @@ import { Menu, X, Mail } from 'lucide-react';
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const scrollPositionRef = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,29 +21,47 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (isMenuOpen) {
+            // Save current scroll position
+            scrollPositionRef.current = window.scrollY;
+
+            // Lock scroll on body and html
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPositionRef.current}px`;
+            document.body.style.width = '100%';
+            document.documentElement.style.overflow = 'hidden';
+        } else {
+            // Restore scroll
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.documentElement.style.overflow = '';
+
+            // Restore scroll position
+            window.scrollTo(0, scrollPositionRef.current);
+        }
+    }, [isMenuOpen]);
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
-        // Prevent body scroll when menu is open
-        if (!isMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
     };
 
     const closeMenu = () => {
         setIsMenuOpen(false);
-        document.body.style.overflow = 'unset';
     };
 
     return (
         <>
             <header
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
                     isScrolled
                         ? 'bg-white/90 backdrop-blur-md border-b border-white/20'
                         : 'bg-transparent'
                 }`}
+                style={{ willChange: 'transform' }}
             >
                 <div className='max-w-7xl mx-auto px-4 py-6'>
                     <div className='flex items-center justify-between'>
@@ -152,17 +171,10 @@ export default function Header() {
             >
                 <div className='flex flex-col flex-1 min-h-0 overflow-hidden'>
                     {/* Mobile Menu Header */}
-                    <div className='flex items-center justify-between p-6 border-b border-gray-200'>
+                    <div className='flex items-center p-6 border-b border-gray-200'>
                         <Link href='/' onClick={closeMenu}>
                             <Logo size='lg' variant='dark' />
                         </Link>
-                        <button
-                            onClick={closeMenu}
-                            className='p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors'
-                            aria-label='Close menu'
-                        >
-                            <X className='h-6 w-6' />
-                        </button>
                     </div>
 
                     {/* Mobile Menu Navigation */}
