@@ -1,19 +1,44 @@
 'use client';
 
-import Link from 'next/link';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Logo from '@/components/Logo';
 import ScrollAnimation from '@/components/ScrollAnimation';
 
 export default function HeroSection() {
+    const [currentVideo, setCurrentVideo] = useState('/video2.mp4');
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const handleVideoEnd = () => {
+            // Rotate between video2 and video1
+            setCurrentVideo((prev) => 
+                prev === '/video2.mp4' ? '/video1.mp4' : '/video2.mp4'
+            );
+        };
+
+        video.addEventListener('ended', handleVideoEnd);
+        
+        // Ensure video plays when source changes
+        video.load();
+        video.play().catch(() => {});
+
+        return () => {
+            video.removeEventListener('ended', handleVideoEnd);
+        };
+    }, [currentVideo]);
+
     return (
         <section className='relative h-screen flex items-center justify-center overflow-hidden'>
             {/* Background Video */}
             <div className='absolute inset-0 overflow-hidden'>
                 <video
+                    ref={videoRef}
                     autoPlay
-                    loop
                     muted
                     playsInline
                     preload='auto'
@@ -24,7 +49,7 @@ export default function HeroSection() {
                         (e.target as HTMLVideoElement).play().catch(() => {});
                     }}
                 >
-                    <source src='/video1.mp4' type='video/mp4' />
+                    <source src={currentVideo} type='video/mp4' />
                 </video>
                 {/* White Tinted Overlay */}
                 <div className='absolute inset-0 bg-gradient-to-br from-white/70 via-white/60 to-white/70'></div>
@@ -66,23 +91,18 @@ export default function HeroSection() {
 
                     <ScrollAnimation delay={0.4}>
                         <div className='flex flex-col sm:flex-row gap-6 justify-center mb-16'>
-                            <Link href='/contact'>
+                            <a 
+                                href='https://calendly.com/44up-info/30min' 
+                                target='_blank' 
+                                rel='noopener noreferrer'
+                            >
                                 <Button
                                     size='lg'
                                     className='text-lg px-10 py-8 bg-orange-500 hover:bg-orange-800 shadow-2xl hover:shadow-orange-700/25 transition-all duration-300 transform hover:scale-105 text-white font-medium'
                                 >
                                     Start Your Project
                                 </Button>
-                            </Link>
-                            <Link href='/services'>
-                                <Button
-                                    variant='outline'
-                                    size='lg'
-                                    className='text-lg px-10 py-8 border-2 border-gray-300 text-gray-800 hover:bg-gray-50 backdrop-blur-sm transition-all duration-300 transform hover:scale-105'
-                                >
-                                    View Our Solutions
-                                </Button>
-                            </Link>
+                            </a>
                         </div>
                     </ScrollAnimation>
                 </div>

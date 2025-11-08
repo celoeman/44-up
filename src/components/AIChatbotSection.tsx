@@ -1,9 +1,7 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
 import ScrollAnimation from '@/components/ScrollAnimation';
 
 export default function AIChatbotSection() {
@@ -55,22 +53,23 @@ export default function AIChatbotSection() {
                 <div className='text-center mb-20'>
                     <ScrollAnimation delay={0.1}>
                         <Badge className='mb-6 bg-gradient-to-r from-blue-300/20 to-orange-300/20 text-white border border-white/20 backdrop-blur-sm px-6 py-2'>
-                            🤖 AI-Powered Solutions
+                            💻 Custom Software Development
                         </Badge>
                     </ScrollAnimation>
                     <ScrollAnimation delay={0.2}>
                         <h2 className='text-5xl md:text-6xl font-bold text-white mb-8'>
-                            Intelligent AI Chatbots That
+                            Bespoke Software That
                             <span className='bg-gradient-to-r from-blue-300 via-orange-300 to-pink-300 bg-clip-text text-transparent block'>
-                                Transform Customer Experience
+                                Transforms Customer Experience
                             </span>
                         </h2>
                     </ScrollAnimation>
                     <ScrollAnimation delay={0.3}>
                         <p className='text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed'>
-                            Deploy cutting-edge AI chatbots that understand context,
-                            learn from interactions, and provide instant,
-                            intelligent responses to your customers 24/7.
+                            Build custom software solutions tailored to your
+                            unique business needs, designed to streamline
+                            operations, improve efficiency, and deliver
+                            measurable results that drive growth.
                         </p>
                     </ScrollAnimation>
                 </div>
@@ -78,89 +77,97 @@ export default function AIChatbotSection() {
                 {/* CTA Section */}
                 <ScrollAnimation delay={0.4} direction='up'>
                     <div className='relative mt-20'>
-                    <div className='relative bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-gray-200 overflow-hidden'>
-                        {/* Decorative gradient accent */}
-                        <div className='absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-500 via-orange-500 to-pink-500'></div>
+                        <div className='relative bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-gray-200 overflow-hidden'>
+                            {/* Decorative gradient accent */}
+                            <div className='absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-500 via-orange-500 to-pink-500'></div>
 
-                        {/* Pattern overlay */}
-                        <div className='absolute inset-0 opacity-5'>
-                            <div className='absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(251,146,60,0.1)_25%,rgba(251,146,60,0.1)_50%,transparent_50%,transparent_75%,rgba(251,146,60,0.1)_75%,rgba(251,146,60,0.1))] bg-[size:20px_20px]'></div>
-                        </div>
+                            {/* Pattern overlay */}
+                            <div className='absolute inset-0 opacity-5'>
+                                <div className='absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(251,146,60,0.1)_25%,rgba(251,146,60,0.1)_50%,transparent_50%,transparent_75%,rgba(251,146,60,0.1)_75%,rgba(251,146,60,0.1))] bg-[size:20px_20px]'></div>
+                            </div>
 
-                        <div className='relative z-10'>
-                            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-center'>
-                                {/* Left side - Content */}
-                                <div>
-                                    <div className='inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full border border-orange-200'>
-                                        <span className='text-sm font-semibold text-orange-700'>
-                                            🤖 AI Chatbot Solutions
-                                        </span>
-                                    </div>
-                                    <h3 className='text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight'>
-                                        Ready to Deploy Your AI Chatbot?
-                                    </h3>
-                                    <p className='text-lg text-gray-600 mb-6 leading-relaxed'>
-                                        Join companies around the world already
-                                        using AI chatbots to enhance customer
-                                        experience, reduce costs, and increase
-                                        conversions.
-                                    </p>
-                                    <Link href='/contact'>
-                                        <Button
-                                            size='lg'
-                                            className='text-lg px-8 py-6 bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold'
+                            <div className='relative z-10'>
+                                <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-center'>
+                                    {/* Left side - Content */}
+                                    <div>
+                                        <div className='inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full border border-orange-200'>
+                                            <span className='text-sm font-semibold text-orange-700'>
+                                                💻 Ecommerce, Web, Mobile
+                                            </span>
+                                        </div>
+                                        <h3 className='text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight'>
+                                            Ready to Build Your Vision?
+                                        </h3>
+                                        <p className='text-lg text-gray-600 mb-6 leading-relaxed'>
+                                            Partner with us to create software
+                                            that perfectly fits your business.
+                                            Our custom solutions are designed to
+                                            scale with you, integrate seamlessly
+                                            with your existing systems, and
+                                            deliver the performance your
+                                            business demands.
+                                        </p>
+                                        <a
+                                            href='https://calendly.com/44up-info/30min'
+                                            target='_blank'
+                                            rel='noopener noreferrer'
                                         >
-                                            Get AI Chatbot Quote
-                                        </Button>
-                                    </Link>
-                                </div>
+                                            <Button
+                                                size='lg'
+                                                className='text-lg px-8 py-6 bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold'
+                                            >
+                                                Schedule a Consultation
+                                            </Button>
+                                        </a>
+                                    </div>
 
-                                {/* Right side - Stats/Features */}
-                                <div className='grid grid-cols-2 gap-4'>
-                                    <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
-                                        <div className='text-3xl font-bold text-pink-600 mb-2'>
-                                            67%
+                                    {/* Right side - Stats/Features */}
+                                    <div className='grid grid-cols-2 gap-4'>
+                                        <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
+                                            <div className='text-3xl font-bold text-pink-600 mb-2'>
+                                                40%
+                                            </div>
+                                            <div className='text-sm text-gray-700 font-medium'>
+                                                Efficiency Increase
+                                            </div>
                                         </div>
-                                        <div className='text-sm text-gray-700 font-medium'>
-                                            Customer Satisfaction
+                                        <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
+                                            <div className='text-3xl font-bold text-pink-600 mb-2'>
+                                                50%
+                                            </div>
+                                            <div className='text-sm text-gray-700 font-medium'>
+                                                Cost Reduction
+                                            </div>
+                                        </div>
+                                        <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
+                                            <div className='text-3xl font-bold text-pink-600 mb-2'>
+                                                3-6
+                                            </div>
+                                            <div className='text-sm text-gray-700 font-medium'>
+                                                Months to Launch
+                                            </div>
+                                        </div>
+                                        <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
+                                            <div className='text-3xl font-bold text-pink-600 mb-2'>
+                                                100%
+                                            </div>
+                                            <div className='text-sm text-gray-700 font-medium'>
+                                                Tailored to Your Needs
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
-                                        <div className='text-3xl font-bold text-pink-600 mb-2'>
-                                            24/7
-                                        </div>
-                                        <div className='text-sm text-gray-700 font-medium'>
-                                            Availability
-                                        </div>
+                                    <div className='mt-6 text-center'>
+                                        <p className='text-xs text-gray-500 italic'>
+                                            *Metrics based on typical custom
+                                            software projects. Actual results
+                                            vary based on project scope and
+                                            requirements.
+                                        </p>
                                     </div>
-                                    <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
-                                        <div className='text-3xl font-bold text-pink-600 mb-2'>
-                                            30%
-                                        </div>
-                                        <div className='text-sm text-gray-700 font-medium'>
-                                            Cost Reduction
-                                        </div>
-                                    </div>
-                                    <div className='bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 border border-pink-200'>
-                                        <div className='text-3xl font-bold text-pink-600 mb-2'>
-                                            &lt;2s
-                                        </div>
-                                        <div className='text-sm text-gray-700 font-medium'>
-                                            Avg Response Time
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='mt-6 text-center'>
-                                    <p className='text-xs text-gray-500 italic'>
-                                        *Stats based on industry averages.
-                                        Actual results may vary based on
-                                        implementation and use case.
-                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </ScrollAnimation>
             </div>
         </section>

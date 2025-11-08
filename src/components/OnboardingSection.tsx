@@ -1,9 +1,10 @@
 import { Button } from './ui/button';
 import Link from 'next/link';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 const onboardingSteps = [
     {
-        title: 'Onboarding',
+        title: 'Discovery',
         description:
             'We schedule a meeting to discuss your goals, needs, and expectations.',
     },
@@ -37,9 +38,11 @@ export default function OnboardingSection() {
         <section className='py-20 px-4 bg-white'>
             <div className='max-w-7xl mx-auto'>
                 <div className='text-center mb-16'>
-                    <h2 className='text-4xl font-bold text-gray-900 mb-4'>
-                        Initial Onboarding
-                    </h2>
+                    <ScrollAnimation delay={0.1}>
+                        <h2 className='text-4xl font-bold text-gray-900 mb-4'>
+                            Initial Discovery
+                        </h2>
+                    </ScrollAnimation>
                 </div>
 
                 <div className='relative max-w-6xl mx-auto'>
@@ -48,10 +51,12 @@ export default function OnboardingSection() {
 
                     <div className='space-y-12'>
                         {onboardingSteps.map((step, index) => (
-                            <div
+                            <ScrollAnimation
                                 key={index}
-                                className='relative flex items-start md:items-center'
+                                delay={0.1 + index * 0.1}
+                                direction='up'
                             >
+                                <div className='relative flex items-start md:items-center'>
                                 {/* Timeline dot */}
                                 <div className='absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10 flex-shrink-0'>
                                     <div className='w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 flex items-center justify-center shadow-lg'>
@@ -92,37 +97,44 @@ export default function OnboardingSection() {
                                     )}
                                 </div>
                             </div>
+                            </ScrollAnimation>
                         ))}
                     </div>
                 </div>
 
-                <div className='text-center mt-12'>
-                    <div className='bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8'>
-                        <h3 className='text-2xl font-bold text-gray-900 mb-4'>
-                            Ready to Start Your Project?
-                        </h3>
-                        <p className='text-lg text-gray-600 mb-6'>
-                            Let&apos;s discuss your vision and create something
-                            extraordinary together.
-                        </p>
-                        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                            <Link href='/contact'>
-                                <Button size='lg' className='text-lg px-8'>
-                                    Start Your Project
-                                </Button>
-                            </Link>
-                            <Link href='/services'>
-                                <Button
-                                    variant='outline'
-                                    size='lg'
-                                    className='text-lg px-8'
+                <ScrollAnimation delay={0.4} direction='up'>
+                    <div className='text-center mt-12'>
+                        <div className='bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8'>
+                            <h3 className='text-2xl font-bold text-gray-900 mb-4'>
+                                Ready to Start Your Project?
+                            </h3>
+                            <p className='text-lg text-gray-600 mb-6'>
+                                Let&apos;s discuss your vision and create something
+                                extraordinary together.
+                            </p>
+                            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                                <a
+                                    href='https://calendly.com/44up-info/30min'
+                                    target='_blank'
+                                    rel='noopener noreferrer'
                                 >
-                                    View Our Services
-                                </Button>
-                            </Link>
+                                    <Button size='lg' className='text-lg px-8'>
+                                        Start Your Project
+                                    </Button>
+                                </a>
+                                <Link href='/services'>
+                                    <Button
+                                        variant='outline'
+                                        size='lg'
+                                        className='text-lg px-8'
+                                    >
+                                        View Our Services
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ScrollAnimation>
             </div>
         </section>
     );

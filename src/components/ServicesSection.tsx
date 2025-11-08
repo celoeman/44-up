@@ -5,15 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-    Globe,
-    Server,
-    Search,
-    Smartphone,
-    Paintbrush,
-    Briefcase,
-} from 'lucide-react';
 import ScrollAnimation from '@/components/ScrollAnimation';
+import { services } from '@/lib/services';
 
 export const serviceCategories = [
     {
@@ -194,7 +187,7 @@ export const serviceCategories = [
         ],
     },
     {
-        name: 'Consulting & Business Services',
+        name: 'Tech Consulting & Business Services',
         description: 'Advising leadership and planning growth',
         examples:
             'Growth strategy, digital transformation, workflow automation, financial operations, KPI tracking',
@@ -248,51 +241,6 @@ export const serviceCategories = [
                 },
             },
         ],
-    },
-];
-
-const services = [
-    {
-        icon: Globe,
-        title: 'Web Development',
-        description:
-            'Building functional, responsive websites and web applications with modern technologies to create powerful digital experiences that drive business results.',
-        gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-        icon: Paintbrush,
-        title: 'Design and Marketing',
-        description:
-            'Crafting visually appealing designs and comprehensive marketing strategies that enhance brand presence, create intuitive user experiences, and drive customer engagement and conversions.',
-        gradient: 'from-pink-500 to-rose-500',
-    },
-    {
-        icon: Server,
-        title: 'Hosting & Maintenance',
-        description:
-            'Providing secure, reliable hosting services and ongoing maintenance to ensure websites run smoothly and are up-to-date with the latest software and security patches.',
-        gradient: 'from-green-500 to-emerald-500',
-    },
-    {
-        icon: Search,
-        title: 'SEO',
-        description:
-            'Optimizing websites to improve organic search engine rankings, increase visibility, and drive targeted traffic by implementing best practices in content, keywords, and technical aspects.',
-        gradient: 'from-purple-500 to-pink-500',
-    },
-    {
-        icon: Briefcase,
-        title: 'Consulting & Business Services',
-        description:
-            'Providing strategic guidance and business solutions including digital transformation advisory, workflow automation, CRM setup, and data-driven strategy to help your business grow.',
-        gradient: 'from-orange-500 to-red-500',
-    },
-    {
-        icon: Smartphone,
-        title: 'Mobile App Development',
-        description:
-            'Building native and cross-platform mobile applications for iOS and Android that deliver exceptional user experiences and drive business growth through innovative mobile solutions.',
-        gradient: 'from-indigo-500 to-blue-500',
     },
 ];
 
@@ -380,25 +328,38 @@ export default function ServicesSection() {
                                         className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-20 blur-xl rounded-3xl transition-opacity duration-500`}
                                     ></div>
 
-                                    <Card className='relative h-full bg-white/90 backdrop-blur-md border-2 border-gray-200 shadow-xl hover:shadow-2xl rounded-3xl p-8 transition-all duration-500 transform hover:scale-105 hover:-rotate-1 group-hover:border-orange-300'>
-                                        <CardContent className='p-0'>
-                                            <div className='flex flex-col items-center text-center'>
+                                    <Card className='relative h-full bg-white/90 backdrop-blur-md border-2 border-gray-200 hover:border-orange-500 rounded-3xl p-8 transition-all duration-300 shadow-xl hover:shadow-[0_10px_40px_rgba(15,23,42,0.3)] flex flex-col'>
+                                        <CardContent className='p-0 flex flex-col flex-1'>
+                                            <div className='flex flex-col items-center text-center flex-1'>
                                                 {/* Icon with Gradient Background */}
                                                 <div
-                                                    className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
+                                                    className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6 transition-all duration-300 shadow-lg flex-shrink-0`}
                                                 >
                                                     <Icon className='w-10 h-10 text-white' />
                                                 </div>
 
                                                 {/* Title */}
-                                                <h3 className='text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300'>
+                                                <h3 className='text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300 flex-shrink-0'>
                                                     {service.title}
                                                 </h3>
 
                                                 {/* Description */}
-                                                <p className='text-gray-700 leading-relaxed'>
+                                                <p className='text-gray-700 leading-relaxed mb-6 flex-1'>
                                                     {service.description}
                                                 </p>
+
+                                                {/* Learn More Button */}
+                                                <Link
+                                                    href={`/services/${service.slug}`}
+                                                    className='w-full mt-auto flex-shrink-0'
+                                                >
+                                                    <Button
+                                                        variant='outline'
+                                                        className='w-full border-2 border-gray-300 bg-transparent hover:border-[#0F172A] hover:bg-[#0F172A] hover:text-white text-gray-700 transition-all duration-300 font-semibold'
+                                                    >
+                                                        Learn More
+                                                    </Button>
+                                                </Link>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -432,22 +393,18 @@ export default function ServicesSection() {
                                     tailored to your needs.
                                 </p>
                                 <div className='flex flex-col sm:flex-row gap-6 justify-center'>
-                                    <Link href='/services'>
-                                        <Button
-                                            size='lg'
-                                            className='text-lg px-10 py-6 bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:scale-105 font-semibold'
-                                        >
-                                            Explore All Services
-                                        </Button>
-                                    </Link>
-                                    <Link href='/contact'>
+                                    <a
+                                        href='https://calendly.com/44up-info/30min'
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                    >
                                         <Button
                                             size='lg'
                                             className='text-lg px-10 py-6 bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:scale-105 font-semibold'
                                         >
                                             Get a Free Consultation
                                         </Button>
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>

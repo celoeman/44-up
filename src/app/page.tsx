@@ -1,8 +1,7 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import ServicesSection from '@/components/ServicesSection';
+import CustomSoftwareSection from '@/components/CustomSoftwareSection';
 import AIChatbotSection from '@/components/AIChatbotSection';
-import FeaturesSection from '@/components/FeaturesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
 
@@ -12,9 +11,8 @@ export default function Home() {
             <Header />
             <main>
                 <HeroSection />
-                <ServicesSection />
+                <CustomSoftwareSection />
                 <AIChatbotSection />
-                <FeaturesSection />
                 <TestimonialsSection />
             </main>
             <Footer />
