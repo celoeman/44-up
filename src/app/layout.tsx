@@ -18,13 +18,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: '44Up - Digital Innovation & AI Solutions',
+    title: '44Up - Custom Software Solutions',
     description:
-        'Transform your business with cutting-edge digital solutions including AI chatbots, web development, mobile apps, and e-commerce platforms. Your vision, our expertise.',
+        'Transform your business with cutting-edge custom software solutions. Your vision, our expertise.',
     icons: {
-        icon: '/Square.png',
-        shortcut: '/Square.png',
-        apple: '/Square.png',
+        icon: '/logo.svg',
+        shortcut: '/logo.svg',
+        apple: '/logo.svg',
     },
 };
 
@@ -36,8 +36,8 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <head>
-                <link rel='icon' href='/Square.png' type='image/png' />
-                <link rel='shortcut icon' href='/Square.png' />
+                <link rel='icon' href='/logo.svg' type='image/svg+xml' />
+                <link rel='shortcut icon' href='/logo.svg' />
                 <meta name='theme-color' content='#2563eb' />
             </head>
             <body
