@@ -188,10 +188,17 @@ export default function Header() {
             >
                 <div className='flex flex-col flex-1 min-h-0 overflow-hidden'>
                     {/* Mobile Menu Header */}
-                    <div className='flex items-center p-6 border-b border-gray-200'>
+                    <div className='flex items-center justify-between p-6 border-b border-gray-200'>
                         <Link href='/' onClick={closeMenu}>
                             <Logo size='lg' variant='dark' />
                         </Link>
+                        <button
+                            onClick={closeMenu}
+                            className='p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors'
+                            aria-label='Close menu'
+                        >
+                            <X className='h-6 w-6' />
+                        </button>
                     </div>
 
                     {/* Mobile Menu Navigation */}

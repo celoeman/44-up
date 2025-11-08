@@ -36,10 +36,6 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <head>
-                <meta
-                    name='viewport'
-                    content='width=device-width, initial-scale=1'
-                />
                 <link rel='icon' href='/logo.svg' type='image/svg+xml' />
                 <link rel='shortcut icon' href='/logo.svg' />
                 <meta name='theme-color' content='#2563eb' />
